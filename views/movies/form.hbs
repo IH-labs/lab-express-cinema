@@ -1,0 +1,38 @@
+<div class="container my-5">
+  {{#if movie}}
+    <h1 class="mb-5">Edit</h1>
+    <form action="/movies/{{movie._id}}/edit" method="POST"></form>
+  {{else}}
+    <h1 class="mb-5">Create a movie</h1>
+    <form action="/movies/create" method="POST"></form>
+  {{/if}}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" name="title" value="{{movie.title}}" class="form-control" id="title" required>
+    </div>
+    <div class="mb-3">
+      <label for="director" class="form-label">Director</label>
+      <input type="text" name="director" value="{{movie.director}}" class="form-control" id="director" required>
+    </div>
+    <div class="mb-3">
+      <label for="stars" class="form-label">Stars</label>
+      <input type="text" name="stars" value="{{movie.stars}}" class="form-control" id="stars">
+      <div id="starsHelp" class="form-text">Type the stars separated by commas.</div>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" name="image" value="{{movie.image}}" class="form-control" id="image">
+      <div id="starsHelp" class="form-text">Type/paste the image`s URL.</div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" name="description" value="{{movie.description}}" class="form-control" id="description">
+    </div>
+    <div class="mb-3">
+      <label for="showtimes" class="form-label">showtimes</label>
+      <input type="text" name="showtimes" value="{{movie.showtimes}}" class="form-control" id="showtimes">
+      <div id="starsHelp" class="form-text">Type the times separated by commas.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

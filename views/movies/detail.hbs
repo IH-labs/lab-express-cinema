@@ -1,0 +1,48 @@
+<div class="container mb-5">
+  <h1 class="my-5">{{movie.title}}</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <img src="{{movie.image}}" alt="{{movie.title}}" class="img-fluid">
+    </div>
+    <div class="col-6">
+      <p><strong>Director:</strong> {{movie.director}}</p>
+      <p><strong>Stars:</strong> {{movie.stars}}</p>
+      <p><strong>Description:</strong> {{movie.description}}</p>
+      <p><strong>Showtimes:</strong> {{movie.showtimes}}</p>
+
+      <div class="movie-action-buttons">
+        <form action="/movies/{{movie.id}}/delete" method="POST">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <a href="/movies/{{movie.id}}/edit" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>Review list</h3>
+
+    <ul class="list-group list-group-flush">
+      {{#each movie.reviews as |review|}}
+        <li class="list-group-item">{{review.reviewText}}</li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="row">
+    <h3>Create review</h3>
+    <form action="/reviews/{{movie._id}}/create" method="POST">
+      <div class="mb-3">
+        <label for="reviewText" class="form-label">Type your review</label>
+        <textarea
+          rows="3"
+          cols="50"
+          name="reviewText"
+          class="form-control"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
